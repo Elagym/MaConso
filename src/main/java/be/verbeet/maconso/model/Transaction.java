@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Observable;
 
 /**
@@ -26,6 +27,9 @@ public class Transaction extends Observable {
 
     @Column
     private BigDecimal amount;
+
+    @Column
+    private Calendar date;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -66,6 +70,14 @@ public class Transaction extends Observable {
         this.amount = amount;
         setChanged();
         notifyObservers(amount);
+    }
+
+    public Calendar getDate() {
+        return date;
+    }
+
+    public void setDate(Calendar date) {
+        this.date = date;
     }
 
     public Frequency getFrequency() {

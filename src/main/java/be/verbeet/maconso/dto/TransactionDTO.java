@@ -5,6 +5,7 @@ import be.verbeet.maconso.enumeration.Frequency;
 import be.verbeet.maconso.enumeration.TransactionType;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 
 /**
  * Created by Vince on 11-06-22.
@@ -16,6 +17,8 @@ public class TransactionDTO {
     private String label;
 
     private BigDecimal amount;
+
+    private Calendar date;
 
     private Frequency frequency;
 
@@ -47,6 +50,14 @@ public class TransactionDTO {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public Calendar getDate() {
+        return date;
+    }
+
+    public void setDate(Calendar date) {
+        this.date = date;
     }
 
     public Frequency getFrequency() {

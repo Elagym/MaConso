@@ -37,6 +37,7 @@ public class TransactionServiceImpl implements TransactionService {
         transaction.setCategory(dto.getCategory());
         transaction.setLabel(dto.getLabel());
         transaction.setFrequency(dto.getFrequency());
+        transaction.setDate(dto.getDate());
 //        transaction.setType(dto.getType()); This shouldn't be updatable. An incorrect transaction should be recreated
         return transactionRepo.save(transaction);
     }
@@ -50,11 +51,15 @@ public class TransactionServiceImpl implements TransactionService {
             transaction.setAmount(dto.getAmount());
         }
         transaction.setLabel(dto.getLabel());
+        transaction.setDate(dto.getDate());
         return transaction;
     }
 
     @Override
     public void deleteTransaction(Long id) {
-        transactionRepo.deleteById(id);
+        Transaction transaction = transactionRepo.getReferenceById(id);
+        Wallet wallet = transaction.getWallet();
+        wallet.setAmount(wallet.getAmount().subtract(transaction.getAmount()));
+        transactionRepo.delete(transaction);
     }
 }

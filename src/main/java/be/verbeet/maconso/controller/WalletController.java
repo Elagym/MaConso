@@ -34,4 +34,10 @@ public class WalletController {
     public ResponseEntity<Wallet> updateWallet(@RequestBody WalletDTO dto) {
         return ResponseEntity.ok(walletService.updateWallet(dto));
     }
+
+    @DeleteMapping(path = "/{id}")
+    public void deleteWallet(@PathVariable Long id) {
+        walletService.deleteWallet(id);
+    }
+
 }
