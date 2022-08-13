@@ -25,7 +25,7 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public Wallet createWallet(WalletDTO dto) {
-        Wallet wallet = WalletMapper.map(dto);
+        Wallet wallet = WalletMapper.INSTANCE.map(dto);
         repo.save(wallet);
         return wallet;
     }

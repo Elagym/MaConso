@@ -11,11 +11,11 @@ import java.util.List;
  */
 public interface TransactionService {
 
-    List<Transaction> findAllByWalletId(Long walletId);
+    List<TransactionDTO> findAllByWalletId(Long walletId);
 
-    Transaction createTransaction(TransactionDTO dto);
+    TransactionDTO createTransaction(TransactionDTO dto);
 
-    Transaction updateTransaction(TransactionDTO dto);
+    TransactionDTO updateTransaction(TransactionDTO dto);
 
     void deleteTransaction(Long id);
 }

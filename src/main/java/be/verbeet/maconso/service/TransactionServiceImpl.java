@@ -1,6 +1,7 @@
 package be.verbeet.maconso.service;
 
 import be.verbeet.maconso.dto.TransactionDTO;
+import be.verbeet.maconso.mapper.TransactionMapper;
 import be.verbeet.maconso.model.Transaction;
 import be.verbeet.maconso.model.Wallet;
 import be.verbeet.maconso.repository.TransactionRepository;
@@ -23,14 +24,14 @@ public class TransactionServiceImpl implements TransactionService {
     private WalletRepository walletRepo;
 
     @Override
-    public List<Transaction> findAllByWalletId(Long walletId) {
-        return transactionRepo.findByWallet_IdEquals(walletId);
+    public List<TransactionDTO> findAllByWalletId(Long walletId) {
+        return TransactionMapper.INSTANCE.mapList(transactionRepo.findByWallet_IdEquals(walletId));
     }
 
     @Override
-    public Transaction createTransaction(TransactionDTO dto) {
+    public TransactionDTO createTransaction(TransactionDTO dto) {
         Transaction transaction = new Transaction();
-        Wallet wallet = walletRepo.getReferenceById(dto.getId());
+        Wallet wallet = walletRepo.getReferenceById(dto.getWalletId());
         transaction.setWallet(wallet);
         transaction.addObserver(wallet);
         transaction.setAmount(dto.getAmount());
@@ -38,12 +39,12 @@ public class TransactionServiceImpl implements TransactionService {
         transaction.setLabel(dto.getLabel());
         transaction.setFrequency(dto.getFrequency());
         transaction.setDate(dto.getDate());
-//        transaction.setType(dto.getType()); This shouldn't be updatable. An incorrect transaction should be recreated
-        return transactionRepo.save(transaction);
+        transaction.setType(dto.getType());
+        return TransactionMapper.INSTANCE.map(transactionRepo.save(transaction));
     }
 
     @Override
-    public Transaction updateTransaction(TransactionDTO dto) {
+    public TransactionDTO updateTransaction(TransactionDTO dto) {
         Transaction transaction = transactionRepo.getReferenceById(dto.getId());
         if (!transaction.getAmount().equals(dto.getAmount())) {
             Wallet wallet = transaction.getWallet();
@@ -52,7 +53,7 @@ public class TransactionServiceImpl implements TransactionService {
         }
         transaction.setLabel(dto.getLabel());
         transaction.setDate(dto.getDate());
-        return transaction;
+        return TransactionMapper.INSTANCE.map(transaction);
     }
 
     @Override

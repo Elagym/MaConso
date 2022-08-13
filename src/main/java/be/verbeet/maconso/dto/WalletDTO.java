@@ -14,8 +14,6 @@ public class WalletDTO {
 
     private BigDecimal amount;
 
-    private List<RestrictionDTO> restrictions;
-
     public Long getId() {
         return id;
     }
@@ -38,13 +36,5 @@ public class WalletDTO {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
-    }
-
-    public List<RestrictionDTO> getRestrictions() {
-        return restrictions;
-    }
-
-    public void setRestrictions(List<RestrictionDTO> restrictions) {
-        this.restrictions = restrictions;
     }
 }

@@ -20,17 +20,17 @@ public class TransactionController {
     private TransactionService transactionService;
 
     @GetMapping(path = "/{walletId}")
-    public ResponseEntity<List<Transaction>> findAllByWalletId(@PathVariable Long walletId) {
+    public ResponseEntity<List<TransactionDTO>> findAllByWalletId(@PathVariable Long walletId) {
         return ResponseEntity.ok(transactionService.findAllByWalletId(walletId));
     }
 
     @PostMapping
-    public ResponseEntity<Transaction> createTransaction(@RequestBody TransactionDTO dto) {
+    public ResponseEntity<TransactionDTO> createTransaction(@RequestBody TransactionDTO dto) {
         return ResponseEntity.ok(transactionService.createTransaction(dto));
     }
 
     @PutMapping
-    public ResponseEntity<Transaction> updateTransaction(@RequestBody TransactionDTO dto) {
+    public ResponseEntity<TransactionDTO> updateTransaction(@RequestBody TransactionDTO dto) {
         return ResponseEntity.ok(transactionService.updateTransaction(dto));
     }
 

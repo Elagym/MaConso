@@ -9,6 +9,6 @@ public enum Frequency {
     WEEKLY,
     MONTHLY,
     QUARTERLY,
-    HARLFYEARLY,
+    HALFYEARLY,
     YEARLY
 }

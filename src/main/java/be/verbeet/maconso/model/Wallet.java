@@ -27,9 +27,6 @@ public class Wallet implements Observer {
     @Column
     private BigDecimal amount;
 
-    @OneToMany(mappedBy = "wallet")
-    private List<Restriction> restrictions;
-
     public Long getId() {
         return id;
     }
@@ -52,22 +49,6 @@ public class Wallet implements Observer {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
-    }
-
-    public List<Restriction> getRestrictions() {
-        return restrictions;
-    }
-
-    public void setRestrictions(List<Restriction> restrictions) {
-        this.restrictions = restrictions;
-    }
-
-    public void addRestriction(Restriction restriction) {
-        if (restrictions == null) {
-            restrictions = new ArrayList<>();
-        }
-        restrictions.add(restriction);
-        restriction.setWallet(this);
     }
 
     @Override
