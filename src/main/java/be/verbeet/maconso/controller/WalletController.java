@@ -3,7 +3,7 @@ package be.verbeet.maconso.controller;
 import be.verbeet.maconso.dto.WalletDTO;
 import be.verbeet.maconso.model.Wallet;
 import be.verbeet.maconso.service.WalletService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +14,11 @@ import java.util.List;
  */
 //@CrossOrigin(origins = "http://localhost:8080")
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/wallets")
 public class WalletController {
 
-    @Autowired
-    private WalletService walletService;
+    private final WalletService walletService;
 
     @GetMapping
     public ResponseEntity<List<Wallet>> findAll() {

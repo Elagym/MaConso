@@ -13,7 +13,7 @@ public interface TransactionService {
 
     List<TransactionDTO> findAllByWalletId(Long walletId);
 
-    TransactionDTO createTransaction(TransactionDTO dto);
+    TransactionDTO createTransaction(TransactionDTO dto, Long walletId);
 
     TransactionDTO updateTransaction(TransactionDTO dto);
 

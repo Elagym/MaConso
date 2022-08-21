@@ -12,13 +12,11 @@ public class RestrictionDTO {
 
     private Long id;
 
-    private BigDecimal totalAmount;
+    private BigDecimal maxAmount;
 
     private Frequency frequency;
 
     private Category category;
-
-    private WalletDTO wallet;
 
     public Long getId() {
         return id;
@@ -28,12 +26,12 @@ public class RestrictionDTO {
         this.id = id;
     }
 
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
+    public BigDecimal getMaxAmount() {
+        return maxAmount;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setMaxAmount(BigDecimal maxAmount) {
+        this.maxAmount = maxAmount;
     }
 
     public Frequency getFrequency() {
@@ -50,13 +48,5 @@ public class RestrictionDTO {
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public WalletDTO getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(WalletDTO wallet) {
-        this.wallet = wallet;
     }
 }

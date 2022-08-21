@@ -6,7 +6,7 @@ import be.verbeet.maconso.model.Transaction;
 import be.verbeet.maconso.model.Wallet;
 import be.verbeet.maconso.repository.TransactionRepository;
 import be.verbeet.maconso.repository.WalletRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,13 +15,12 @@ import java.util.List;
  * Created by Vince on 31-07-22.
  */
 @Component
+@RequiredArgsConstructor
 public class TransactionServiceImpl implements TransactionService {
 
-    @Autowired
-    private TransactionRepository transactionRepo;
+    private final TransactionRepository transactionRepo;
 
-    @Autowired
-    private WalletRepository walletRepo;
+    private final WalletRepository walletRepo;
 
     @Override
     public List<TransactionDTO> findAllByWalletId(Long walletId) {
@@ -29,9 +28,9 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public TransactionDTO createTransaction(TransactionDTO dto) {
+    public TransactionDTO createTransaction(TransactionDTO dto, Long walletId) {
         Transaction transaction = new Transaction();
-        Wallet wallet = walletRepo.getReferenceById(dto.getWalletId());
+        Wallet wallet = walletRepo.getReferenceById(walletId);
         transaction.setWallet(wallet);
         transaction.addObserver(wallet);
         transaction.setAmount(dto.getAmount());

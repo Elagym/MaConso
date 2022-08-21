@@ -14,6 +14,7 @@ public enum Category {
     RESOURCES ("Gaz, Electricity, Water, Internet, Phone"),
     SPORT ("Sport"),
     UNHEALTHY ("Drugs, Alcohol, Cigarettes"),
+    GIFT ("Anniversary, Celebration, ..."),
     OTHER("Other");
 
     private String description;

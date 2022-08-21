@@ -26,10 +26,6 @@ public class TransactionDTO {
 
     private TransactionType type;
 
-    private Long walletId;
-
-    private String walletLabel;
-
     public Long getId() {
         return id;
     }
@@ -84,21 +80,5 @@ public class TransactionDTO {
 
     public void setType(TransactionType type) {
         this.type = type;
-    }
-
-    public Long getWalletId() {
-        return walletId;
-    }
-
-    public void setWalletId(Long walletId) {
-        this.walletId = walletId;
-    }
-
-    public String getWalletLabel() {
-        return walletLabel;
-    }
-
-    public void setWalletLabel(String walletLabel) {
-        this.walletLabel = walletLabel;
     }
 }

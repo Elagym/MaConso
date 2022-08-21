@@ -4,7 +4,7 @@ import be.verbeet.maconso.dto.WalletDTO;
 import be.verbeet.maconso.mapper.WalletMapper;
 import be.verbeet.maconso.model.Wallet;
 import be.verbeet.maconso.repository.WalletRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,10 +13,10 @@ import java.util.List;
  * Created by Vince on 29-07-22.
  */
 @Component
+@RequiredArgsConstructor
 public class WalletServiceImpl implements WalletService {
 
-    @Autowired
-    private WalletRepository repo;
+    private final WalletRepository repo;
 
     @Override
     public List<Wallet> findAll() {
