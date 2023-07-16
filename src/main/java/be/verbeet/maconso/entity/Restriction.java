@@ -1,10 +1,10 @@
-package be.verbeet.maconso.model;
+package be.verbeet.maconso.entity;
 
 import be.verbeet.maconso.enumeration.Category;
 import be.verbeet.maconso.enumeration.Frequency;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 /**
@@ -20,7 +20,7 @@ public class Restriction {
     private Long id;
 
     @Column
-    private BigDecimal totalAmount;
+    private BigDecimal maxAmount;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -41,12 +41,12 @@ public class Restriction {
         this.id = id;
     }
 
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
+    public BigDecimal getMaxAmount() {
+        return maxAmount;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setMaxAmount(BigDecimal totalAmount) {
+        this.maxAmount = totalAmount;
     }
 
     public Frequency getFrequency() {

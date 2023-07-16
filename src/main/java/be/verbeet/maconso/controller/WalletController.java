@@ -1,7 +1,7 @@
 package be.verbeet.maconso.controller;
 
 import be.verbeet.maconso.dto.WalletDTO;
-import be.verbeet.maconso.model.Wallet;
+import be.verbeet.maconso.entity.Wallet;
 import be.verbeet.maconso.service.WalletService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

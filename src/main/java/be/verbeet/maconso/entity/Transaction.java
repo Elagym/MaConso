@@ -1,14 +1,13 @@
-package be.verbeet.maconso.model;
+package be.verbeet.maconso.entity;
 
 import be.verbeet.maconso.enumeration.Category;
 import be.verbeet.maconso.enumeration.Frequency;
 import be.verbeet.maconso.enumeration.TransactionType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.Observable;
 
 /**
  * Created by Vince on 11-06-22.
@@ -16,7 +15,7 @@ import java.util.Observable;
 @Entity
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 @Table(name = "transactions")
-public class Transaction extends Observable {
+public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -68,8 +67,6 @@ public class Transaction extends Observable {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
-        setChanged();
-        notifyObservers(amount);
     }
 
     public Calendar getDate() {

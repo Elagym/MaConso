@@ -1,7 +1,7 @@
 package be.verbeet.maconso.service;
 
 import be.verbeet.maconso.dto.WalletDTO;
-import be.verbeet.maconso.model.Wallet;
+import be.verbeet.maconso.entity.Wallet;
 
 import java.util.List;
 

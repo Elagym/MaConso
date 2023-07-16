@@ -1,17 +1,17 @@
 package be.verbeet.maconso.service;
 
 import be.verbeet.maconso.dto.RestrictionDTO;
-import be.verbeet.maconso.model.Restriction;
+import be.verbeet.maconso.entity.Restriction;
 import be.verbeet.maconso.repository.RestrictionRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by Vince on 01-08-22.
  */
-@Component
+@Service
 @RequiredArgsConstructor
 public class RestrictionServiceImpl implements RestrictionService {
 

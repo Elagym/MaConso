@@ -1,7 +1,7 @@
 package be.verbeet.maconso.service;
 
 import be.verbeet.maconso.dto.RestrictionDTO;
-import be.verbeet.maconso.model.Restriction;
+import be.verbeet.maconso.entity.Restriction;
 
 import java.util.List;
 

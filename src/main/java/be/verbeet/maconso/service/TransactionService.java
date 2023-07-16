@@ -1,8 +1,7 @@
 package be.verbeet.maconso.service;
 
+import be.verbeet.maconso.criteria.TransactionSearchCriteria;
 import be.verbeet.maconso.dto.TransactionDTO;
-import be.verbeet.maconso.model.Transaction;
-import be.verbeet.maconso.model.Wallet;
 
 import java.util.List;
 
@@ -12,6 +11,8 @@ import java.util.List;
 public interface TransactionService {
 
     List<TransactionDTO> findAllByWalletId(Long walletId);
+
+    List<TransactionDTO> findAllByCriteria(TransactionSearchCriteria criteria);
 
     TransactionDTO createTransaction(TransactionDTO dto, Long walletId);
 
