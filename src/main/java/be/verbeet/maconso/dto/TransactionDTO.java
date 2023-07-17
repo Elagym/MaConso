@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Value;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /**
  * Created by Vince on 11-06-22.
@@ -22,7 +22,7 @@ public class TransactionDTO {
 
     private BigDecimal amount;
 
-    private Calendar date;
+    private LocalDate date;
 
     private Frequency frequency;
 

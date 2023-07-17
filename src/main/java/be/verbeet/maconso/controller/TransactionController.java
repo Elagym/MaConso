@@ -1,5 +1,6 @@
 package be.verbeet.maconso.controller;
 
+import be.verbeet.maconso.criteria.TransactionSearchCriteria;
 import be.verbeet.maconso.dto.TransactionDTO;
 import be.verbeet.maconso.service.TransactionService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,11 @@ public class TransactionController {
     @GetMapping(path = "/{walletId}")
     public ResponseEntity<List<TransactionDTO>> findAllByWalletId(@PathVariable Long walletId) {
         return ResponseEntity.ok(transactionService.findAllByWalletId(walletId));
+    }
+
+    @PostMapping
+    public ResponseEntity<List<TransactionDTO>> findAllByCriteria(@RequestBody TransactionSearchCriteria criteria) {
+        return ResponseEntity.ok(transactionService.findAllByCriteria(criteria));
     }
 
     @PostMapping(path = "/{walletId}")

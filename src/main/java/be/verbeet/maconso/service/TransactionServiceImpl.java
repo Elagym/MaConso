@@ -8,10 +8,14 @@ import be.verbeet.maconso.entity.Wallet;
 import be.verbeet.maconso.repository.TransactionRepository;
 import be.verbeet.maconso.repository.WalletRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+import static be.verbeet.maconso.criteria.specification.TransactionSpecifications.*;
 
 /**
  * Created by Vince on 31-07-22.
@@ -24,6 +28,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     private final WalletRepository walletRepo;
 
+    @Autowired
     private final TransactionMapper transactionMapper;
 
     @Override
@@ -33,7 +38,16 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public List<TransactionDTO> findAllByCriteria(TransactionSearchCriteria criteria) {
-        return null;
+        return transactionMapper.mapList(
+                transactionRepo.findAll(Specification
+                        .where(labelEquals(criteria.getLabel()))
+                        .and(amountEquals(criteria.getAmount()))
+                        .and(dateEquals(criteria.getDate()))
+                        .and(frequencyEquals(criteria.getFrequency()))
+                        .and(categoryEquals(criteria.getCategory()))
+                        .and(typeEquals(criteria.getType()))
+                        .and(walletLabelEquals(criteria.getWalletLabel()))
+                ));
     }
 
     @Override

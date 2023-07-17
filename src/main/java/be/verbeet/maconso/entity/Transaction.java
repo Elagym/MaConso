@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /**
  * Created by Vince on 11-06-22.
@@ -28,7 +28,7 @@ public class Transaction {
     private BigDecimal amount;
 
     @Column
-    private Calendar date;
+    private LocalDate date;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -69,11 +69,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Calendar getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Calendar date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
